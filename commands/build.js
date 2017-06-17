@@ -17,14 +17,14 @@ const action = (config, options, callback) => {
         beautify: false,
         comments: false
       })
-    );
+    )
   }
 
   execute(webpackConfig, options.watch, callback, (err, stats) => {
     if (err || stats.hasErrors()) {
       console.error(
         stats.toJson({}, true)
-      );
+      )
     }
   })
 }
@@ -34,13 +34,13 @@ const execute = (config, shouldWatch, callback, onChange) => {
     webpack(config).watch({
       agregateTimeout: 300,
       poll: 1000
-    }, onChange);
+    }, onChange)
   }
   else {
     webpack(config, pipe(
       onChange,
       callback
-    ));
+    ))
   }
 }
 

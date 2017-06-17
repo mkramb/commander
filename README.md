@@ -1,5 +1,9 @@
 # ui-commander
 
+* TypeScript
+* Sass, CSS modules
+* Mocha, Chai, Sinon
+
 ### Usage
 
 ```
