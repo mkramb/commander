@@ -1,7 +1,6 @@
-const webpack = require('webpack');
-const paths = require('./paths');
+const paths = require('../lib/paths')
 
-const config = {
+module.exports = {
   entry: [
     paths.appIndex
   ],
@@ -31,17 +30,4 @@ const config = {
     ]
   },
   plugins: []
-};
-
-module.exports = (args) => {
-  if (args.prod) {
-    config.plugins.push(
-      new webpack.optimize.UglifyJsPlugin({
-        beautify: false,
-        comments: false
-      })
-    );
-  }
-
-  return config;
-};
+}

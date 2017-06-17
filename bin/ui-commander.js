@@ -1,25 +1,21 @@
 #!/usr/bin/env node
 
-const spawn = require('cross-spawn');
+const vorpal = require('vorpal')()
+const {
+  resolveAppPath,
+  requireIfExists
+} = require('../lib/resolve')
 
-const script = process.argv[2];
-const args = process.argv.slice(3)
+const config = Object.assign(
+  require('../config'),
+  requireIfExists(
+    resolveAppPath('app.config')
+  )
+)
 
-switch (script) {
-  case 'build':
-  case 'compile': {
-    const result = spawn.sync(
-      'node',
-      [require.resolve('../scripts/' + script)].concat(args),
-      { stdio: 'inherit' }
-    );
+require('../commands/build')(vorpal, config)
 
-    process.exit(result.status);
-    break;
-  }
-  default: {
-    console.log('Unknown script "' + script + '".');
-    console.log('Perhaps you need to update ui-build-scripts?');
-    break;
-  }
-}
+vorpal
+  .delimiter('ui-commander ❯❯❯')
+  .parse(process.argv)
+  .show()

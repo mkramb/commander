@@ -10,7 +10,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
-  "devDependencies" : {
+  "scripts": {
+    "shell": "ui-commander",
     "build": "ui-commander build",
     "build:watch": "ui-commander build --watch",
     "build:prod": "ui-commander build --prod"
