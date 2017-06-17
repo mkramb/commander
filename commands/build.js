@@ -1,6 +1,6 @@
-const { pipe } = require('ramda')
 const webpack = require('webpack')
-const clone = require('clone')
+const { pipe } = require('ramda')
+const { addCommand } = require('../lib/vorpal')
 
 const options = (vorpal) => {
   return vorpal
@@ -9,10 +9,8 @@ const options = (vorpal) => {
 }
 
 const action = (config, options, callback) => {
-  const webpackConfig = clone(config.webpack)
-
   if (options.prod) {
-    webpackConfig.plugins.push(
+    config.webpack.plugins.push(
       new webpack.optimize.UglifyJsPlugin({
         beautify: false,
         comments: false
@@ -20,7 +18,7 @@ const action = (config, options, callback) => {
     )
   }
 
-  execute(webpackConfig, options.watch, callback, (err, stats) => {
+  execute(config.webpack, options.watch, callback, (err, stats) => {
     if (err || stats.hasErrors()) {
       console.error(
         stats.toJson({}, true)
@@ -44,12 +42,7 @@ const execute = (config, shouldWatch, callback, onChange) => {
   }
 }
 
-module.exports = (vorpal, config) => {
-  vorpal
-    .command('build')
-    .description('build project bundle')
-    .use(options)
-    .action(({ options }, callback) => {
-      return action(config, options, callback)
-    })
-}
+module.exports = addCommand({
+  name: 'build', 
+  description: 'build project bundle'
+}, options, action)
