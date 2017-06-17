@@ -18,7 +18,11 @@ const action = (config, options, callback) => {
     )
   }
 
-  execute(config.webpack, options.watch, callback, (err, stats) => {
+  if (options.watch) {
+    config.webpack.watch = true
+  }
+
+  execute(config.webpack, callback, (err, stats) => {
     if (err || stats.hasErrors()) {
       console.error(
         stats.toJson({}, true)
@@ -27,8 +31,8 @@ const action = (config, options, callback) => {
   })
 }
 
-const execute = (config, shouldWatch, callback, onChange) => {
-  if (shouldWatch) {
+const execute = (config, callback, onChange) => {
+  if (config.watch) {
     webpack(config).watch({
       agregateTimeout: 300,
       poll: 1000
