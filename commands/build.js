@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const { pipe } = require('ramda')
-const { addCommand } = require('../lib/vorpal')
+const { addCommand } = require('../utils/vorpal')
 
 const options = (vorpal) => {
   return vorpal

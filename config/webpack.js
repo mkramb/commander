@@ -1,4 +1,4 @@
-const paths = require('../lib/paths')
+const paths = require('../utils/paths')
 
 module.exports = {
   entry: [
@@ -10,7 +10,7 @@ module.exports = {
     pathinfo: true
   },
   resolve: {
-    extensions: ['.ts', '.tsx'],
+    extensions: ['.ts', '.tsx', '.js'],
     modules: [
       paths.appSrc,
       paths.appNodeModules
@@ -18,14 +18,38 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.tsx?$/,
-        loaders: [
+        use: [
           require.resolve('babel-loader'),
           require.resolve('awesome-typescript-loader')
         ],
         include: paths.appSrc
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            query: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          require.resolve('sass-loader')
+        ],
+        include: paths.appSrc
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: [
+          require.resolve('style-loader'),
+          require.resolve('css-loader')
+        ],
+        include: paths.appNodeModules,
       }
     ]
   },

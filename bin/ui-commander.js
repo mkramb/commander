@@ -6,7 +6,7 @@ const onDeath = require('death')
 const {
   resolveAppPath,
   requireIfExists
-} = require('../lib/resolve')
+} = require('../utils/resolve')
 
 const config = merge.smart(
   require('../config'),
