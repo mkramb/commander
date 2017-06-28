@@ -28,7 +28,7 @@ module.exports = {
         include: paths.appSrc
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
         use: [
           require.resolve('style-loader'),
           {
@@ -38,13 +38,12 @@ module.exports = {
               importLoaders: 1,
               localIdentName: '[name]__[local]___[hash:base64:5]'
             }
-          },
-          require.resolve('sass-loader')
+          }
         ],
         include: paths.appSrc
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
         use: [
           require.resolve('style-loader'),
           require.resolve('css-loader')

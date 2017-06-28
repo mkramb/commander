@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const spawn = require('cross-spawn');
 
-const { appDist } = require('../utils/paths')
+const { appCompile } = require('../utils/paths')
 const { resolveAppPath } = require('../utils/resolve')
 const { addCommand } = require('../utils/vorpal')
 
@@ -13,7 +13,7 @@ const options = (vorpal) => {
 
 const action = (config, options, callback) => {
   const outDir = options.outDir ?
-    resolveAppPath(options.outDir) : appDist
+    resolveAppPath(options.outDir) : appCompile
 
   const arguments = [
     '--outDir', outDir,

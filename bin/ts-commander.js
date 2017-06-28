@@ -18,7 +18,7 @@ require('../commands/build')(vorpal, config)
 require('../commands/compile')(vorpal, config)
 
 vorpal
-  .delimiter('ui-commander ❯❯❯')
+  .delimiter('ts-commander ❯❯❯')
   .parse(process.argv)
   .show()
 

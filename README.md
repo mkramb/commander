@@ -1,27 +1,20 @@
-# ui-commander
-
-* TypeScript
-* Sass, CSS modules
-* Mocha, Chai, Sinon
+# ts-commander
 
 ### Usage
 
 ```
 {
-  "name": "my-new-app",
+  "name": "my-new-tapp",
   "version": "0.1.0",
   "scripts": {
-    "build": "ui-commander build",
-    "build:watch": "ui-commander build --watch",
-    "build:prod": "ui-commander build --prod"
-  },
-  "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "shell": "ts-commander",
+    "build": "ts-commander build",
+    "build:watch": "ts-commander build --watch",
+    "build:prod": "ts-commander build --prod",
+    "compile": "ts-commander compile"
   },
   "devDependencies": {
-    "@types/react": "^15.0.29",
-    "@types/react-dom": "^15.5.0"
+    "ts-commander": "latest"
   }
 }
 ```

@@ -5,5 +5,5 @@ module.exports = {
   appIndex: resolveAppPath('src/index.tsx'),
   appNodeModules: resolveAppPath('node_modules'),
   appBuild: resolveAppPath('build'),
-  appDist: resolveAppPath('dist')
+  appCompile: resolveAppPath('compile')
 }
