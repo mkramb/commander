@@ -3,6 +3,7 @@
 const vorpal = require('vorpal')()
 const merge = require('webpack-merge')
 const onDeath = require('death')
+
 const {
   resolveAppPath,
   requireIfExists
@@ -14,6 +15,7 @@ const config = merge.smart(
 )
 
 require('../commands/build')(vorpal, config)
+require('../commands/compile')(vorpal, config)
 
 vorpal
   .delimiter('ui-commander ❯❯❯')

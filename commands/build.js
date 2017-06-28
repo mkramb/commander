@@ -1,5 +1,7 @@
-const webpack = require('webpack')
 const { pipe } = require('ramda')
+const webpack = require('webpack')
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+
 const { addCommand } = require('../utils/vorpal')
 
 const options = (vorpal) => {
@@ -22,16 +24,30 @@ const action = (config, options, callback) => {
     config.webpack.watch = true
   }
 
-  execute(config.webpack, callback, (err, stats) => {
+  compile(config.webpack, callback, (err, stats) => {
     if (err || stats.hasErrors()) {
-      console.error(
-        stats.toJson({}, true)
-      )
+      const rawMessages = stats.toJson({}, true);
+      const messages = formatWebpackMessages(rawMessages);
+
+      if (!messages.errors.length && !messages.warnings.length) {
+        console.log('Compiled successfully!');
+      }
+
+      if (messages.errors.length) {
+        console.log('Failed to compile.');
+        messages.errors.forEach(e => console.log(e));
+        return;
+      }
+
+      if (messages.warnings.length) {
+        console.log('Compiled with warnings.');
+        messages.warnings.forEach(w => console.log(w));
+      }
     }
   })
 }
 
-const execute = (config, callback, onChange) => {
+const compile = (config, callback, onChange) => {
   if (config.watch) {
     webpack(config).watch({
       agregateTimeout: 300,
