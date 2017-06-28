@@ -4,7 +4,7 @@
 
 ```
 {
-  "name": "my-new-tapp",
+  "name": "my-new-ts-app",
   "version": "0.1.0",
   "scripts": {
     "shell": "ts-commander",
