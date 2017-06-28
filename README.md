@@ -9,8 +9,6 @@
   "scripts": {
     "shell": "ts-commander",
     "build": "ts-commander build",
-    "build:watch": "ts-commander build --watch",
-    "build:prod": "ts-commander build --prod",
     "compile": "ts-commander compile"
   },
   "devDependencies": {

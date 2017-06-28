@@ -11,7 +11,7 @@ const options = (vorpal) => {
     .option('--watch', 'start file watcher')
 }
 
-const action = (config, options, callback) => {
+const action = function(config, options, callback) {
   const outDir = options.outDir ?
     resolveAppPath(options.outDir) : appCompile
 
@@ -27,12 +27,10 @@ const action = (config, options, callback) => {
   const result = spawn.sync(
     require.resolve('../node_modules/.bin/tsc'),
     arguments, { stdio: 'inherit' }
-  );
+  )
 
-
-  console.log('Compiled successfully!');
-
-  callback();
+  this.log('Compiled successfully!')
+  callback()
 }
 
 module.exports = addCommand({

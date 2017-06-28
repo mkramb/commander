@@ -16,11 +16,12 @@ const config = merge.smart(
 
 require('../commands/build')(vorpal, config)
 require('../commands/compile')(vorpal, config)
+require('../commands/initialize')(vorpal, config)
 
 vorpal
   .delimiter('ts-commander ❯❯❯')
-  .parse(process.argv)
   .show()
+  .parse(process.argv)
 
 onDeath(() => {
   process.stdin.setRawMode(false)
