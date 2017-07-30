@@ -7,7 +7,7 @@
   "bin": {
     "ts-commander": "./bin/ts-commander.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "awesome-typescript-loader": "^3.1.3",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
