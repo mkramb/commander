@@ -2,7 +2,7 @@
   "name": "ts-commander",
   "version": "1.0.2",
   "description": "Opinionated TS build commands",
-  "author": "Mitja Kramberger <mitja.kramberge@gmail.com>",
+  "author": "Mitja Kramberger <mitja.kramberger@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
