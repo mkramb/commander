@@ -27,7 +27,7 @@ const action = function(config, options, callback) {
   }
 
   const result = spawn.sync(
-    require.resolve('../node_modules/.bin/tsc'),
+    resolveAppPath('node_modules/.bin/tsc'),
     arguments, { stdio: 'inherit' }
   )
 

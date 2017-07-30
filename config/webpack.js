@@ -1,19 +1,19 @@
-const paths = require('../utils/paths')
+const { resolveAppPath } = require('../utils/resolve')
 
 module.exports = {
   entry: [
-    paths.appIndex
+    resolveAppPath('src/index.tsx')
   ],
   output: {
-    path: paths.appBuild,
+    path: resolveAppPath('build'),
     filename: 'bundle.js',
     pathinfo: true
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
     modules: [
-      paths.appSrc,
-      paths.appNodeModules
+      resolveAppPath('src'),
+      resolveAppPath('node_modules')
     ]
   },
   devtool: 'source-map',
@@ -25,7 +25,7 @@ module.exports = {
           require.resolve('babel-loader'),
           require.resolve('awesome-typescript-loader')
         ],
-        include: paths.appSrc
+        include: resolveAppPath('src')
       },
       {
         test: /\.css$/,
@@ -40,7 +40,7 @@ module.exports = {
             }
           }
         ],
-        include: paths.appSrc
+        include: resolveAppPath('src')
       },
       {
         test: /\.css$/,
@@ -48,7 +48,7 @@ module.exports = {
           require.resolve('style-loader'),
           require.resolve('css-loader')
         ],
-        include: paths.appNodeModules,
+        include: resolveAppPath('node_modules')
       }
     ]
   },
