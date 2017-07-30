@@ -1,6 +1,6 @@
 const { pipe } = require('ramda')
 const webpack = require('webpack')
-const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
+const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 
 const { addCommand } = require('../utils/vorpal')
 
@@ -26,22 +26,22 @@ const action = function(config, options, callback) {
 
   compile(config.webpack, callback, (err, stats) => {
     if (err || stats.hasErrors()) {
-      const rawMessages = stats.toJson({}, true);
-      const messages = formatWebpackMessages(rawMessages);
+      const rawMessages = stats.toJson({}, true)
+      const messages = formatWebpackMessages(rawMessages)
 
       if (!messages.errors.length && !messages.warnings.length) {
-        this.log('Compiled successfully!');
+        this.log('Compiled successfully!')
       }
 
       if (messages.errors.length) {
         this.log('Failed to compile.');
-        messages.errors.forEach(e => this.log(e));
-        return;
+        messages.errors.forEach(e => this.log(e))
+        return
       }
 
       if (messages.warnings.length) {
-        this.log('Compiled with warnings.');
-        messages.warnings.forEach(w => this.log(w));
+        this.log('Compiled with warnings.')
+        messages.warnings.forEach(w => this.log(w))
       }
     }
   })

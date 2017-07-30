@@ -9,7 +9,7 @@ const {
   requireIfExists
 } = require('../utils/resolve')
 
-const config = merge.smart(
+const config = merge(
   require('../config'),
   requireIfExists(resolveAppPath('app.config'))
 )
