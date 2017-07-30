@@ -1,9 +1,13 @@
 {
   "name": "ts-commander",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Opinionated TS build commands",
   "author": "Mitja Kramberger <mitja.kramberge@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mkramb/ts-commander.git"
+  },
   "bin": {
     "ts-commander": "./bin/ts-commander.js"
   },
